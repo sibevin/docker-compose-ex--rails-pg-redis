@@ -2,12 +2,12 @@
 
 ## Setup
 
-### In folder
+### In docker-compose folder
 
 * Clone your rails app repo to `shared_folder/rails/your-rails-app`
 * Build docker images: `docker-compose build`
 * Run docker compose: `docker-compose up`
-* Open another console and connect to rails container: `docker exec -it devenvdocker_rails_1 bash`
+* Open another console and connect to rails container: `docker exec -it dockercomposeexrailspgredis_rails_1 bash`
 
 ### In rails container
 
@@ -24,10 +24,10 @@ POSTGRES_DB=rpr_db
 
 ## Run
 
-### In dev-env-docker folder
+### In docker-compose folder
 
 * Run docker compose: `docker-compose up`
-* Open another console and connect to rails container: `docker exec -it devenvdocker_rails_1 bash`
+* Open another console and connect to rails container: `docker exec -it dockercomposeexrailspgredis_rails_1 bash`
 
 ### In rails container
 
@@ -40,7 +40,7 @@ POSTGRES_DB=rpr_db
 
 * ctrl+c to stop rails server
 
-### In dev-env-docker folder
+### In docker-compose folder
 
 * ctrl+c to stop docker-compose
 * Remove containers: `docker-compose down`
@@ -54,6 +54,7 @@ POSTGRES_DB=rpr_db
 * You can put ENVs in `rails/app.env`
 * A docker image is built and tagged with `rpr/rails:5.0.0.1`
 * Use offical image: ruby:2.4.1
+* Rails is not installed by default, you can run `gem install rails` if needed
 
 ### Database
 
