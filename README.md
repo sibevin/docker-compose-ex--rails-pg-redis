@@ -1,4 +1,4 @@
-# A docker-compose example for rails + pg + radis
+# A docker-compose example for rails + pg + redis
 
 ## Setup
 
@@ -55,6 +55,7 @@ POSTGRES_DB=rpr_db
 * A docker image is built and tagged with `rpr/rails:5.0.0.1`
 * Use offical image: ruby:2.4.1
 * Rails is not installed by default, you can run `gem install rails` if needed
+* Js runner is not installed by default, you can choose one of them (https://github.com/rails/execjs) to install
 
 ### Database
 
