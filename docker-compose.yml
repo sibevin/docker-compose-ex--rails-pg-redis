@@ -1,0 +1,37 @@
+version: "3"
+services:
+  db:
+    image: postgres:9.6.4
+    environment:
+      - POSTGRES_PASSWORD=rpr_pw
+      - POSTGRES_USER=rpr_user
+      - POSTGRES_DB=rpr_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./shared_folder/postgres:/var/lib/postgresql/data
+  redis:
+    image: redis:3.2.10
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./shared_folder/redis:/data
+  rails:
+    build: ./rails
+    image: rpr/rails:5.0.0.1
+    stdin_open: true
+    tty: true
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./rails/app.env
+    volumes:
+      - ./shared_folder/rails:/app
+      - ./shared_folder/bundle/gems:/usr/local/bundle/gems:cached
+      - ./shared_folder/bundle/extensions:/usr/local/bundle/extensions:cached
+      - ./shared_folder/bundle/bin:/usr/local/bundle/bin:cached
+      - ./shared_folder/bundle/cache:/usr/local/bundle/cache:cached
+      - ./shared_folder/bundle/specifications:/usr/local/bundle/specifications:cached
+    depends_on:
+      - db
+      - redis
